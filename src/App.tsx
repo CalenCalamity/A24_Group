@@ -3,7 +3,6 @@ import './App.css';
 import BaseComponent from './components/BaseComponent';
 
 function App() {
-  // let divHeight = ""; 
   const [divHeight, setDivHeight] = useState<string>();
 
   return (

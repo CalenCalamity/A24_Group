@@ -1,4 +1,4 @@
-import { Component, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     StyledDiv,
     StyledSpan,
@@ -24,10 +24,7 @@ const BaseComponent = ({ divHeight, onChangeDivHeight } : BaseComponentTypes) =>
     
     return (
     <>
-        <StyledDiv
-            height={compDivHeight}
-            background={'purple'}
-        >
+        <StyledDiv height={compDivHeight}>
             <StyledSpan>
                 {windowHeight}
             </StyledSpan>
