@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { Component, useEffect, useRef, useState } from 'react';
 import {
     StyledDiv,
     StyledSpan,
     StyledInput
 } from './baseComponent.style';
+import withFunc, { BaseComponentTypes } from '../HOC/withFunc';
 
-const BaseComponent = () => {
-
-    const [divHeight, setDivHeight] = useState<string>();
+const BaseComponent = ({ divHeight, onChangeDivHeight } : BaseComponentTypes) => {
+    const [compDivHeight, setCompDivHeight] = useState(divHeight);
     const hasWindow = typeof window !== 'undefined';
     const getHeight = () => hasWindow ? window.innerHeight : null
     const [windowHeight, setWindowHeight] = useState(getHeight());
@@ -20,10 +20,12 @@ const BaseComponent = () => {
     }
     }, [hasWindow]);
 
+    useEffect(() => setCompDivHeight(divHeight), [divHeight]);
+    
     return (
     <>
         <StyledDiv
-            height={divHeight}
+            height={compDivHeight}
             background={'purple'}
         >
             <StyledSpan>
@@ -31,8 +33,8 @@ const BaseComponent = () => {
             </StyledSpan>
             <StyledInput
                 placeholder="Numbers only"
-                value={divHeight}
-                onChange={(e) => setDivHeight(e.target.value.toString())}
+                value={compDivHeight}
+                onChange={(e) => onChangeDivHeight(e.target.value)}
                 pattern="[0-9]*"
             />
         </StyledDiv>
@@ -40,4 +42,4 @@ const BaseComponent = () => {
     );
 }
 
-export default BaseComponent;
+export default withFunc(BaseComponent);
