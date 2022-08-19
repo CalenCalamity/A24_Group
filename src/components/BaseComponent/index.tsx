@@ -4,7 +4,7 @@ import {
     StyledSpan,
     StyledInput
 } from './baseComponent.style';
-import withFunc, { BaseComponentTypes } from '../HOC/withFunc';
+import withFunc, { BaseComponentTypes } from '../../utils/withFunc';
 
 const BaseComponent = ({ divHeight, onChangeDivHeight } : BaseComponentTypes) => {
     const [compDivHeight, setCompDivHeight] = useState(divHeight);
